@@ -1,29 +1,12 @@
-file = open("myFile.txt","w")
-file.write("myText")
+# file=open("test.txt", "r/w/a",)
+# file.read()
+# file.write()
+# file.close()
+import log_parser as logs
+import report_generator as generateReport
 
-file.close()
-import bookCreator as bookCreator
-import bookActivity as bookActivity
-import fileReader as reader
-import save as save
-
-def main():
-    print("1 - külalisteraamat")
-    print("2 - tegevusteraamat")
-    print("3 - file lugemine")
-    print("4 - save")
-    userInput = input("Sinu valik: ")
-    if userInput == "1":
-        bookCreator.guestBook()
-    elif userInput == "2":
-        bookActivity.ActivityBook()
-    elif userInput == "3":
-        userFile = input("Milline file sa tahad lugeda?")
-        reader.readFile(userFile)
-    elif userInput == "4":
-        save.save()
-    
-    else:
-        print("vale valik")
-        
-main()
+log_file = "logs.txt"
+result = logs.analyze_log(log_file)
+print(result)
+generateReport.generate_report(result)
+# with open("file.txt","r",encoding="utf-8") as file:
